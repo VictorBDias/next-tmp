@@ -3,6 +3,7 @@ import { type_second } from "@/utils/fonts";
 
 import "./globals.css";
 import { Header } from "@/components";
+import StyledComponentsRegistry from "@/lib/registry";
 
 export const metadata: Metadata = {
   title: "Social Sync",
@@ -18,7 +19,7 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body className={type_second.variable}>
         <Header />
-        {children}
+        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
       </body>
     </html>
   );
