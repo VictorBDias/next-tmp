@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { type_second } from "@/utils/fonts";
 
 import "./globals.css";
+import { Header } from "@/components";
 
 export const metadata: Metadata = {
   title: "Social Sync",
@@ -15,7 +16,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={type_second.variable}>{children}</body>
+      <body className={type_second.variable}>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }
