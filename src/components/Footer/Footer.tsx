@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { Container, Nav } from "./header.styles";
+import { Container, Nav } from "./footer.styles";
 import Image from "next/image";
 
-export const Header = () => {
+export const Footer = () => {
   const user = false;
   return (
     <Container>

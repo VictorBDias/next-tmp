@@ -1,6 +1,20 @@
-* {
-  box-sizing: border-box;
-}
+// src/styles/GlobalStyles.ts
+
+import { createGlobalStyle } from "styled-components";
+
+export const GlobalStyles = createGlobalStyle`
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-size: ${({ theme }) => theme.typography.sizes.regular};
+    background-color: ${({ theme }) => theme.colors.background};
+    color: ${({ theme }) => theme.colors.text};
+  }
+
 
 body {
   margin: 0;
@@ -100,3 +114,5 @@ input {
     transform: initial;
   }
 }
+
+`;

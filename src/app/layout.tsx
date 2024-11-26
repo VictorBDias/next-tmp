@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { type_second } from "@/utils/fonts";
 
-import "./globals.css";
-import { Header } from "@/components";
 import StyledComponentsRegistry from "@/lib/registry";
+
+import ThemeProviderClient from "@/context/theme-provider-client";
 
 export const metadata: Metadata = {
   title: "Social Sync",
@@ -18,8 +18,9 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={type_second.variable}>
-        <Header />
-        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        <ThemeProviderClient>
+          <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        </ThemeProviderClient>
       </body>
     </html>
   );

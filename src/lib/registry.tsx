@@ -1,16 +1,16 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import { useServerInsertedHTML } from "next/navigation";
 import { ServerStyleSheet, StyleSheetManager } from "styled-components";
+import { Header } from "@/components";
 
 export default function StyledComponentsRegistry({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
-  // Only create stylesheet once with lazy initial state
-  // x-ref: https://reactjs.org/docs/hooks-reference.html#lazy-initial-state
+  const [isHydrated, setIsHydrated] = useState(false);
   const [styledComponentsStyleSheet] = useState(() => new ServerStyleSheet());
 
   useServerInsertedHTML(() => {
@@ -19,11 +19,17 @@ export default function StyledComponentsRegistry({
     return <>{styles}</>;
   });
 
-  if (typeof window !== "undefined") return <>{children}</>;
+  useEffect(() => {
+    setIsHydrated(true);
+  }, []);
 
-  return (
-    <StyleSheetManager sheet={styledComponentsStyleSheet.instance}>
-      {children}
-    </StyleSheetManager>
-  );
+  if (isHydrated)
+    return (
+      <>
+        <Header />
+        <StyleSheetManager sheet={styledComponentsStyleSheet.instance}>
+          {children}
+        </StyleSheetManager>
+      </>
+    );
 }

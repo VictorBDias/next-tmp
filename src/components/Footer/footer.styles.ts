@@ -20,6 +20,7 @@ export const Nav = styled.nav`
     padding: 0.5rem 0;
   }
   a.login {
+    color: #333;
     display: flex;
     align-items: center;
   }
