@@ -1,7 +1,7 @@
 export default function Home() {
   return (
-    <main>
+    <section className="container">
       <h1 className="title">Dogs</h1>
-    </main>
+    </section>
   );
 }

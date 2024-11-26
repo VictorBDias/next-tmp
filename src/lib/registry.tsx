@@ -3,7 +3,7 @@
 import React, { ReactNode, useEffect, useState } from "react";
 import { useServerInsertedHTML } from "next/navigation";
 import { ServerStyleSheet, StyleSheetManager } from "styled-components";
-import { Header } from "@/components";
+import { Footer, Header } from "@/components";
 
 export default function StyledComponentsRegistry({
   children,
@@ -25,11 +25,12 @@ export default function StyledComponentsRegistry({
 
   if (isHydrated)
     return (
-      <>
+      <div className="App">
         <Header />
         <StyleSheetManager sheet={styledComponentsStyleSheet.instance}>
-          {children}
+          <main className="AppBody">{children}</main>
         </StyleSheetManager>
-      </>
+        <Footer />
+      </div>
     );
 }
