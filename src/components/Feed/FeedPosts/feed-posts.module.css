@@ -24,14 +24,14 @@
   }
 }
 
-.feedItem {
+.feedItem a {
   display: grid;
   border-radius: 0.2rem;
   overflow: hidden;
   cursor: pointer;
 }
 
-.feedItem > div {
+.feedItem img {
   grid-area: 1/1;
 }
 

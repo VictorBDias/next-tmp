@@ -18,7 +18,7 @@ export const FeedPosts = ({ posts }: { posts: IPost[] }) => {
               sizes="80vw"
             />
 
-            {/* {post.title} */}
+            <span className={styled.view}>{post.acessos}</span>
           </Link>
         </li>
       ))}
