@@ -1,3 +1,5 @@
+"use server";
+
 import { IListAPI, IListDTO } from "@/interfaces/dtos/list.dto";
 import api from "@/services/api";
 
@@ -13,8 +15,8 @@ export type IPost = {
   total_comments: string;
 };
 
-export const listPostsAPI = ({
-  _page = 1,
+export const listPostsAPI = async ({
+  page = 1,
   perPage = 10,
 }: IListDTO): IListAPI<IPost[]> =>
   api.get("photo", {
@@ -22,7 +24,7 @@ export const listPostsAPI = ({
       "Cache-Control": "no-cache",
     },
     params: {
-      _page,
+      _page: page,
       _total: perPage,
       _user: 0,
     },

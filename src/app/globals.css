@@ -1,31 +1,14 @@
-import { createGlobalStyle } from "styled-components";
-
-export const GlobalStyles = createGlobalStyle`
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  html {
-    font-size: ${({ theme }) => theme.typography.sizes.regular};
-    background-color: ${({ theme }) => theme.colors.background};
-    color: ${({ theme }) => theme.colors.text};
-  }
-
-
-body {
-  margin: 0;
-  color: #333;
-  --type-first: Helvetica, Arial, sans-serif;
-  --type-second: var(--second-font-spectral), Georgia;
-  font-family: var(--type-first);
-  padding-top: 4rem;
+* {
+  box-sizing: border-box;
 }
 
-a {
-  text-decoration: none;
+body {
+  padding-top: 4rem;
+  margin: 0px;
   color: #333;
+  --type-first: Helvetica, Arial, sans-serif;
+  --type-second: var(--type-second-spectral), Georgia;
+  font-family: var(--type-first);
 }
 
 h1,
@@ -33,17 +16,18 @@ h2,
 h3,
 h4,
 p {
-  margin: 0;
+  margin: 0px;
 }
 
 ul,
 li {
   list-style: none;
-  padding: 0;
-  margin: 0;
+  padding: 0px;
+  margin: 0px;
 }
 
 img {
+  height: auto;
   display: block;
   max-width: 100%;
 }
@@ -56,14 +40,9 @@ input {
   color: #333;
 }
 
-.App {
-  display: flex;
-  flex-direction: column;
-  min-height: calc(100vh + 10rem);
-}
-
-.AppBody {
-  flex: 1;
+a {
+  text-decoration: none;
+  color: #333;
 }
 
 .container {
@@ -74,8 +53,6 @@ input {
 
 .mainContainer {
   margin-top: 2rem;
-  display: flex;
-  justify-content: center;
 }
 
 .title {
@@ -103,14 +80,26 @@ input {
 .animeLeft {
   opacity: 0;
   transform: translateX(-20px);
-  animation: animeleft 0.3s forwards;
+  animation: animeLeft 0.3s forwards;
 }
 
-@keyframes animeleft {
+@keyframes animeLeft {
   to {
     opacity: 1;
     transform: initial;
   }
 }
 
-`;
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh + 10rem);
+}
+
+.AppBody {
+  flex: 1;
+}
+
+.VictoryContainer {
+  height: initial !important;
+}

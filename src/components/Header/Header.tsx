@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { Container, Nav } from "./header.styles";
+import styled from "./header.module.css";
 import Image from "next/image";
 
 export const Header = () => {
-  const user = false;
+  const user = true;
   return (
-    <Container>
-      <Nav className="container">
+    <div className={styled.container}>
+      <nav className={`${styled.nav} container`}>
         <Link className="logo" href="/">
           <Image
             src="/assets/dogs.svg"
@@ -25,7 +25,7 @@ export const Header = () => {
             Login / Criar
           </Link>
         )}
-      </Nav>
-    </Container>
+      </nav>
+    </div>
   );
 };

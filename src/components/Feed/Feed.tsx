@@ -1,19 +1,12 @@
-import { IPost } from "@/apis/posts";
+import { IPost } from "@/actions/posts-get";
+import { FeedPosts } from "./FeedPosts";
 
-interface FeedProps {
-  posts: IPost[];
-}
+import styled from "./feed.module.css";
 
-export const Feed = ({ posts }: FeedProps) => {
+export const Feed = ({ posts }: { posts: IPost[] }) => {
   return (
-    <div>
-      <h1>Feed</h1>
-
-      {posts?.map((post) => (
-        <div key={post.id}>
-          <p>{post.author}</p>
-        </div>
-      ))}
+    <div className={styled.container}>
+      <FeedPosts posts={posts} />
     </div>
   );
 };

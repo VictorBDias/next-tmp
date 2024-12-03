@@ -1,9 +1,8 @@
 import Image from "next/image";
-import { Container } from "./footer.styles";
-
+import styled from "./footer.module.css";
 export const Footer = () => {
   return (
-    <Container>
+    <div className={styled.container}>
       <Image
         src={"/assets/dogs-footer.svg"}
         alt="dogs"
@@ -11,6 +10,6 @@ export const Footer = () => {
         height={22}
       />
       <p>Dogs. Alguns direitos reservados</p>
-    </Container>
+    </div>
   );
 };
