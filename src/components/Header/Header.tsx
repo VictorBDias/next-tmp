@@ -3,7 +3,7 @@ import styled from "./header.module.css";
 import Image from "next/image";
 
 export const Header = () => {
-  const user = true;
+  const user = false;
   return (
     <div className={styled.container}>
       <nav className={`${styled.nav} container`}>
