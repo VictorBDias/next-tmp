@@ -1,7 +1,7 @@
 "use server";
 
 import { IListAPI, IListDTO } from "@/interfaces/dtos/list.dto";
-import api from "@/services/api";
+import { api } from "@/services/api";
 
 export type IPost = {
   id: number;
