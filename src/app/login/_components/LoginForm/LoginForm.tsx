@@ -2,16 +2,24 @@
 
 import { loginAction } from "@/actions/login";
 import { FormButton } from "@/components";
-import { useActionState } from "react";
+import useAuthStore from "@/store/auth.store";
+import { useActionState, useEffect } from "react";
 
 export const LoginForm = () => {
+  const { isAuthenticated, login, logout } = useAuthStore();
   const [state, formAction] = useActionState(loginAction, {
     ok: false,
     error: "",
     data: null,
   });
 
-  console.log(state, "state");
+  console.log(isAuthenticated, "isAuthenticated");
+
+  useEffect(() => {
+    if (state.ok && !isAuthenticated) {
+      login();
+    }
+  }, [state.ok, isAuthenticated, login]);
 
   return (
     <form action={formAction}>
