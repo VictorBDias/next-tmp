@@ -18,7 +18,7 @@ export const loginAction = async (state: StateProps, formData: FormData) => {
   const password = formData.get("password") as string | null;
 
   if (!username || !password) {
-    return { data: null, ok: false, error: "Username or password is missing" };
+    return { data: null, ok: false, error: "Prencha os campos corretamente!" };
   }
 
   try {
@@ -36,6 +36,7 @@ export const loginAction = async (state: StateProps, formData: FormData) => {
       sameSite: "lax",
       maxAge: 60 * 60 * 24,
     });
+
     return { data: null, ok: true, error: "" };
   } catch (error: unknown) {
     return apiError(error);

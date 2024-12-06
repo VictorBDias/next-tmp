@@ -1,19 +1,18 @@
 "use client";
 
 import { loginAction } from "@/actions/login";
-import { FormButton } from "@/components";
+import { ErrorMessage, FormButton, FormInput } from "@/components";
+
 import useAuthStore from "@/store/auth.store";
 import { useActionState, useEffect } from "react";
 
 export const LoginForm = () => {
-  const { isAuthenticated, login, logout } = useAuthStore();
+  const { isAuthenticated, login } = useAuthStore();
   const [state, formAction] = useActionState(loginAction, {
     ok: false,
     error: "",
     data: null,
   });
-
-  console.log(isAuthenticated, "isAuthenticated");
 
   useEffect(() => {
     if (state.ok && !isAuthenticated) {
@@ -21,17 +20,18 @@ export const LoginForm = () => {
     }
   }, [state.ok, isAuthenticated, login]);
 
+  useEffect(() => {
+    if (state.ok) {
+      window.location.href = "/account";
+    }
+  }, [state.ok]);
+
   return (
-    <form action={formAction}>
-      <input placeholder="usuário" type="text" name="username" id="username" />
-      <input
-        placeholder="Senha"
-        type="password"
-        name="password"
-        id="password"
-      />
+    <form style={{ maxWidth: "50%" }} action={formAction}>
+      <FormInput label="Usuário" name="username" type="text" />
+      <FormInput label="Senha" name="password" type="password" />
+      <ErrorMessage error={state.error} />
       <FormButton />
-      <p>{state.error}</p>
     </form>
   );
 };
